@@ -7,6 +7,7 @@ public class SubMovement : MonoBehaviour
 {
 
     Rigidbody2D rb;
+    PlayerHealth ph;
 
     // input vectors
     Vector2 debugMovement;
@@ -20,18 +21,18 @@ public class SubMovement : MonoBehaviour
     const float fluidDensity = 1f; // g/cm3
 
     // submarine stats
-    public float volume = 10f; // this will probably change with testing
+    public float volume = 15f; // this will probably change with testing
     public float minWeight = 10f; // weight of sub without any crewmates or ballast
 
-    public float throttleChangeRate = 5f; // increase to change throttle faster
-    public float ballastChangeRate = 1f; // increase to change ballast faster
-    public float rotationChangeRate = 3f; // increase to change rotation faster
+    public float throttleChangeRate = 30f; // increase to change throttle faster
+    public float ballastChangeRate = 10f; // increase to change ballast faster
+    public float rotationChangeRate = 10f; // increase to change rotation faster
 
     public float thrustLocation = -1.5f; // relative location of thruster
 
     // movement constraints
     public float debugMoveSpeed = 5f;
-    public float minThrottle = 0f, maxThrottle = 1000f;
+    public float minThrottle = 0f, maxThrottle = 300f;
     public float minBallast = 0f, maxBallast = 50f; // sub starts positively buoyant.
     public float minRotation = -30f, maxRotation = 30f;
 
@@ -54,7 +55,10 @@ public class SubMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerHealth.StartSink += SinkBallast;
+
         rb = GetComponent<Rigidbody2D>();
+        ph = GetComponent<PlayerHealth>();
 	
 	// set throttle values
 	throttleSlider.minValue = minThrottle;
@@ -83,35 +87,34 @@ public class SubMovement : MonoBehaviour
     }
 
     void setTargetThrottle(){
-	targetThrottle = throttleSlider.value;
+        if(!ph.getDead())
+        {
+            targetThrottle = throttleSlider.value;
+        }
     }
 
     void setTargetBallast(){
-	targetBallast = ballastSlider.value;
+        if(!ph.getDead())
+        {
+            targetBallast = ballastSlider.value;
+        }
     }
 
     void setTargetRotation(){
 	targetRotation = rotationSlider.value;
     }
 
-    // Update is called once per frame
-    void Update()
+    void SinkBallast()
     {
-	// debug inputs for if the submarine is stupid
-        debugMovement.x = Input.GetAxis("Horizontal");
-        debugMovement.y = Input.GetAxis("Vertical");
-        rb.MovePosition(rb.position + debugMovement.normalized * debugMoveSpeed * Time.fixedDeltaTime);
+        targetBallast = 100;
+        currentBallast = 100;
+        targetThrottle = 0;
+        currentThrottle = 0;
+    }
 
-	// update our targets using the inputs (will replace with onscreen tools for mouse dragging)
-	targetThrottle += Input.GetAxis("Throttle");
-	targetBallast += Input.GetAxis("Ballast");
-	targetRotation += Input.GetAxis("Rotation");
-
-	// make sure all the values are valid
-	targetThrottle = Mathf.Clamp(targetThrottle, minThrottle, maxThrottle);
-	targetBallast = Mathf.Clamp(targetBallast, minBallast, maxBallast);
-	targetRotation = Mathf.Clamp(targetRotation, minRotation, maxRotation);
-
+    // Update is called once per frame
+    void FixedUpdate()
+    {
 	// Debug.Log("Throttle: " + currentThrottle + " -> " + targetThrottle);
 	// Debug.Log("Ballast:  " + currentBallast + " -> " + targetBallast);
 	// Debug.Log("Rotation: " + currentRotation + " -> " + targetRotation);
@@ -120,12 +123,12 @@ public class SubMovement : MonoBehaviour
 	float throttleDelta = targetThrottle - currentThrottle;
 	currentThrottle += Mathf.Clamp(throttleDelta, -throttleChangeRate, throttleChangeRate) * Time.fixedDeltaTime;
 	float ballastDelta = targetBallast - currentBallast;
-	currentBallast += Mathf.Clamp(ballastDelta, -ballastChangeRate, ballastChangeRate) * Time.fixedDeltaTime;
+    currentBallast += Mathf.Clamp(ballastDelta, -ballastChangeRate, ballastChangeRate) * Time.fixedDeltaTime;
 	float rotationDelta = targetRotation - currentRotation;
 	currentRotation += Mathf.Clamp(rotationDelta, -rotationChangeRate, rotationChangeRate) * Time.fixedDeltaTime;
 
 	// now we determine our force vectors using our current state
-	buoyantForce = fluidDensity * volume * -Physics.gravity;
+	buoyantForce = fluidDensity * volume * -Physics2D.gravity;
 	thrustForce = rb.transform.right * currentThrottle;
 	// Debug.Log("b4rot: " + thrustForce);
 	thrustForce = rotateVector2(thrustForce, currentRotation);
@@ -135,7 +138,7 @@ public class SubMovement : MonoBehaviour
 	// and now we add them to the sub
 	rb.mass = minWeight + currentBallast;
 	rb.AddForce(buoyantForce);
-	rb.AddForceAtPosition(thrustForce, thrustPos);
+    rb.AddForceAtPosition(thrustForce, thrustPos);
 	
     }
 }
