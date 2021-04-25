@@ -92,9 +92,9 @@ public class SubMovement : MonoBehaviour
 	// now we determine our force vectors using our current state
 	buoyantForce = fluidDensity * volume * -Physics.gravity;
 	thrustForce = rb.transform.right * currentThrottle;
-	Debug.Log("b4rot: " + thrustForce);
+	// Debug.Log("b4rot: " + thrustForce);
 	thrustForce = rotateVector2(thrustForce, currentRotation);
-	Debug.Log("afrot: " + thrustForce);
+	// Debug.Log("afrot: " + thrustForce);
 	thrustPos = rb.transform.TransformPoint(thrustLocation, 0, 0);
 
 	// and now we add them to the sub
