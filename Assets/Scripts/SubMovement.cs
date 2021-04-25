@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SubMovement : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class SubMovement : MonoBehaviour
 
     // input vectors
     Vector2 debugMovement;
+
+    // control sliders
+    public Slider throttleSlider;
+    public Slider ballastSlider;
+    public Slider rotationSlider;
 
     // physics things
     const float fluidDensity = 1f; // g/cm3
@@ -49,14 +55,43 @@ public class SubMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+	
+	// set throttle values
+	throttleSlider.minValue = minThrottle;
+	throttleSlider.maxValue = maxThrottle;
+	throttleSlider.value = 0f;
+	ballastSlider.minValue = minBallast;
+	ballastSlider.maxValue = maxBallast;
+	ballastSlider.value = 0f;
+	rotationSlider.minValue = minRotation;
+	rotationSlider.maxValue = maxRotation;
+	rotationSlider.value = 0f;
+
+	// become a subscriber to the sliders
+	throttleSlider.onValueChanged.AddListener(delegate{setTargetThrottle();});
+	ballastSlider.onValueChanged.AddListener(delegate{setTargetBallast();});
+	rotationSlider.onValueChanged.AddListener(delegate{setTargetRotation();});
+
     }
 
     Vector2 rotateVector2(Vector2 v, float deg){
-	float delta = Mathf.Deg2Rad * deg;
+	float delta = Mathf.Deg2Rad * -deg;
 	return new Vector2(
 	    v.x * Mathf.Cos(delta) - v.y * Mathf.Sin(delta),
             v.x * Mathf.Sin(delta) + v.y * Mathf.Cos(delta)
 	);
+    }
+
+    void setTargetThrottle(){
+	targetThrottle = throttleSlider.value;
+    }
+
+    void setTargetBallast(){
+	targetBallast = ballastSlider.value;
+    }
+
+    void setTargetRotation(){
+	targetRotation = rotationSlider.value;
     }
 
     // Update is called once per frame
