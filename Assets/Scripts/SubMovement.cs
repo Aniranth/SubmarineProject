@@ -14,14 +14,14 @@ public class SubMovement : MonoBehaviour
     const float fluidDensity = 1f; // g/cm3
 
     // submarine stats
-    public const float volume = 10f; // this will probably change with testing
-    public const float minWeight = 10f; // weight of sub without any crewmates or ballast
+    public float volume = 10f; // this will probably change with testing
+    public float minWeight = 10f; // weight of sub without any crewmates or ballast
 
-    public const float throttleChangeRate = 5f; // increase to change throttle faster
-    public const float ballastChangeRate = 1f; // increase to change ballast faster
-    public const float rotationChangeRate = 3f; // increase to change rotation faster
+    public float throttleChangeRate = 5f; // increase to change throttle faster
+    public float ballastChangeRate = 1f; // increase to change ballast faster
+    public float rotationChangeRate = 3f; // increase to change rotation faster
 
-    public const float thrustLocation = -1.5f; // relative location of thruster
+    public float thrustLocation = -1.5f; // relative location of thruster
 
     // movement constraints
     public float debugMoveSpeed = 5f;
