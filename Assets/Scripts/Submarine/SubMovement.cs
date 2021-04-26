@@ -8,8 +8,11 @@ public class SubMovement : MonoBehaviour
     public delegate void UIForce(float yForce);
     public static event UIForce OnBallastChange;
 
+    public Animator animator;
+
     Rigidbody2D rb;
     PlayerHealth ph;
+    SpriteRenderer sr;
 
     // input vectors
     Vector2 debugMovement;
@@ -48,6 +51,9 @@ public class SubMovement : MonoBehaviour
     float currentBallast = 0f;
     float currentRotation = 0f;
 
+    // which angle position sprite
+    int pos = 0;
+
     // forces upon the sub
     Vector2 buoyantForce;
     Vector2 thrustForce;
@@ -61,6 +67,7 @@ public class SubMovement : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         ph = GetComponent<PlayerHealth>();
+        sr = GetComponent<SpriteRenderer>();
 	
 	// set throttle values
 	throttleSlider.minValue = minThrottle;
@@ -136,6 +143,31 @@ public class SubMovement : MonoBehaviour
 	thrustForce = rotateVector2(thrustForce, currentRotation);
 	// Debug.Log("afrot: " + thrustForce);
 	thrustPos = rb.transform.TransformPoint(thrustLocation, 0, 0);
+
+        // animator things
+        // first determine which direction we need to face
+        float angle = Vector2.SignedAngle(Vector2.up, rb.transform.right);
+
+        sr.flipY = angle > 0;
+        // now we don't need the sign so let's make it easier on ourselves 
+        angle = Mathf.Abs(angle);
+        // oh fuck here we go
+        if(angle < 22.5){
+            pos = 2;
+        } else if (angle < 90f - 22.5f){
+            pos = 1;
+        } else if (angle < 135f - 22.5f){
+            pos = 0;
+        } else if (angle < 180 - 22.5f){
+            pos = 1;
+        } else {
+            pos = 2;
+        }
+
+
+        // set params
+        animator.SetFloat("CurrThrottle", currentThrottle);
+        animator.SetInteger("Pos", pos);
 
 	// and now we add them to the sub
 	rb.mass = minWeight + currentBallast;

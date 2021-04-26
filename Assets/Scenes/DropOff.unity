@@ -21299,7 +21299,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 24
-      m_TileSpriteIndex: 24
+      m_TileSpriteIndex: 25
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -32647,6 +32647,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 0b014bde58c841c12b95c1604b8333c7, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 788298426ff85bb9a85901bad9496e6e, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 6
     m_Data: {fileID: -6578854188956929929, guid: 4894fc5298daa14e58964fac7f57e33a, type: 3}
@@ -32696,6 +32698,8 @@ Tilemap:
     m_Data: {fileID: -4074428315811558976, guid: 4894fc5298daa14e58964fac7f57e33a, type: 3}
   - m_RefCount: 29
     m_Data: {fileID: 1342826947611635814, guid: 4894fc5298daa14e58964fac7f57e33a, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -7214739140545846956, guid: 4894fc5298daa14e58964fac7f57e33a, type: 3}
   m_TileMatrixArray:
@@ -33088,6 +33092,7 @@ GameObject:
   - component: {fileID: 508475363}
   - component: {fileID: 508475362}
   - component: {fileID: 508475361}
+  - component: {fileID: 508475368}
   m_Layer: 0
   m_Name: BalanceOfAllThings
   m_TagString: Untagged
@@ -33104,7 +33109,7 @@ Transform:
   m_GameObject: {fileID: 508475359}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 127625553}
   - {fileID: 1500131233}
@@ -33172,8 +33177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd1d6dbe4a43e04f86ae93fdfcde4c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlayerHealth: 10
-  currPlayerHealth: 10
+  maxPlayerHealth: 100
+  currPlayerHealth: 100
 --- !u!114 &508475363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33198,6 +33203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467c0aa4d8dab204eb5dc556c5cdec97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 508475368}
   throttleSlider: {fileID: 336015856}
   ballastSlider: {fileID: 1538199757}
   rotationSlider: {fileID: 1519393814}
@@ -33227,8 +33233,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1, y: 0}
-  m_Size: {x: 2.5, y: 1.1}
+  m_Offset: {x: 0.41, y: 0}
+  m_Size: {x: 2.32, y: 1.05}
   m_Direction: 1
 --- !u!50 &508475366
 Rigidbody2D:
@@ -33291,9 +33297,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6fbc6cddf5d4756de8f26ce67c3096a9, type: 3}
+  m_Sprite: {fileID: 5430892571900696711, guid: 4c4d81fd69e325282a7f008f06d96414, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -33302,6 +33308,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &508475368
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508475359}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8439f9d83dc5ec395a60105e0587810b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &522487626
 GameObject:
   m_ObjectHideFlags: 0
