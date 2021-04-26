@@ -33217,7 +33217,7 @@ MonoBehaviour:
   minThrottle: 0
   maxThrottle: 300
   minBallast: 0
-  maxBallast: 50
+  maxBallast: 20
   minRotation: -30
   maxRotation: 30
 --- !u!70 &508475365
