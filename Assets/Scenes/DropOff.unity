@@ -33209,15 +33209,15 @@ MonoBehaviour:
   rotationSlider: {fileID: 1519393814}
   volume: 15
   minWeight: 10
-  throttleChangeRate: 30
-  ballastChangeRate: 10
+  throttleChangeRate: 70
+  ballastChangeRate: 3
   rotationChangeRate: 10
   thrustLocation: -1.5
   debugMoveSpeed: 5
   minThrottle: 0
   maxThrottle: 300
   minBallast: 0
-  maxBallast: 20
+  maxBallast: 10
   minRotation: -30
   maxRotation: 30
 --- !u!70 &508475365
@@ -34680,7 +34680,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '<-- Pitch Up : Pitch Down -->
+  m_Text: '<-- Pitch CCW : Pitch CW -->
 
 
 '
