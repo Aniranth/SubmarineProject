@@ -26,6 +26,11 @@ public class PlayerHealth : MonoBehaviour
             // invoke delegate to play with ui game over you have crashed
             return;
         }
+        if(collision.gameObject.CompareTag("Nonharmful"))
+        {
+            Debug.Log("Point or dialog");
+            return;
+        }
         Creature enemy = collision.gameObject.GetComponent<Creature>(); // Templatize with enemy when class is made
         if(enemy != null) // we have found an enemy in our collision look up damage
         {

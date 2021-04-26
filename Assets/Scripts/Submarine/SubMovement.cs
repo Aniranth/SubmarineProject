@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class SubMovement : MonoBehaviour
 {
+    public delegate void UIForce(float yForce);
+    public static event UIForce OnBallastChange;
 
     Rigidbody2D rb;
     PlayerHealth ph;
@@ -139,6 +141,7 @@ public class SubMovement : MonoBehaviour
 	rb.mass = minWeight + currentBallast;
 	rb.AddForce(buoyantForce);
     rb.AddForceAtPosition(thrustForce, thrustPos);
+    OnBallastChange?.Invoke((buoyantForce + (Physics2D.gravity * rb.mass)).y);
 	
     }
 }
