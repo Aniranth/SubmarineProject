@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
         }
         if(collision.gameObject.CompareTag("Nonharmful"))
         {
-            Debug.Log("Point or dialog");
+            // Debug.Log("Point or dialog");
             return;
         }
         Creature enemy = collision.gameObject.GetComponent<Creature>(); // Templatize with enemy when class is made
@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 currPlayerHealth -= 3;
             }
-            Debug.Log("WallCollision");
+            // Debug.Log("WallCollision");
         }
 
         if(currPlayerHealth <= 0)

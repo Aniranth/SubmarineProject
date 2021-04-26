@@ -32,6 +32,6 @@ public class BallastKnob : MonoBehaviour
     void UpdateResultantForce(float yForce)
     {
         resultantYForce = yForce;
-        Debug.Log(yForce);
+        // Debug.Log(yForce);
     }
 }

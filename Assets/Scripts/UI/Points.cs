@@ -14,6 +14,10 @@ public class Points : MonoBehaviour
         Collectable.Collect += UpdatePointText;
     }
 
+    void OnDestroy(){
+        Collectable.Collect -= UpdatePointText;
+    }
+
     private void UpdatePointText(int value) // value of point probably just 1 but could change
     {
         string number = "";
