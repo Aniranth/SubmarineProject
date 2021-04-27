@@ -42064,6 +42064,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPlayerHealth: 100
   currPlayerHealth: 100
+  loader: {fileID: 0}
+  col_sound: {fileID: 0}
 --- !u!114 &1083595274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43112,7 +43114,7 @@ SpriteRenderer:
   m_SortingLayerID: -2073173587
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: afbbe28bfdb185fb884ee6b9a546c231, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 10e6ad502b32edf41a02a0afd0766993, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
