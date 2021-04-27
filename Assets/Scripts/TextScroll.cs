@@ -20,7 +20,9 @@ public class TextScroll : MonoBehaviour
         box.text = "";
         foreach(char c in text.ToCharArray()){
             box.text += c;
-            yield return null;
+            for(int i=0; i < 30; i++){
+                yield return null;
+            }
         }
     }
 

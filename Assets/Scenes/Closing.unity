@@ -208,7 +208,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2028499355}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
-        m_MethodName: LoadNextLevel
+        m_MethodName: LoadTitle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -415,7 +415,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Continue
+  m_Text: Return
 --- !u!222 &500551500
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1286,37 +1286,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44884d0b674daff24a5a210ca1de8538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: 'One day I took my sailor cap
-
-
-    And set out to find
-
-
-    A wreckage
-    I was taught since my birth
-
-
-    Was unreachable.
-
-
-    Determined,
-
-
-    I
-    set out to the shallows,
-
-
-    To pass the drop off,
-
-
-    To traverse the depths
-
-
-    To
-    find
-
-
-    The Wreck of the Adventure.'
+  text: "When I surfaced\n\nI saw a crowd of people\n\nAll shaking with excitement
+    to hear my tale.\n\n\"What wonders did you see at the bottom of the ocean?\"
+    \n\n\"What strange creatures lay beyond the shallows?\"\n\nAnd one brave reporter
+    asked me, \n\n\"What did you find at the Wreckage of the Adventure?\"\n\n\nI
+    breathed my reply:\n\n\"There was no Adventure at the bottom of the sea.\""
   box: {fileID: 1202819896}
 --- !u!4 &1809413227
 Transform:
@@ -1359,7 +1333,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1cad3324179552a6dbbb36a84b73def6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1329087ec65e0b107a6d9ed6c10a4b95, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
