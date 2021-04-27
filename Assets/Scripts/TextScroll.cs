@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TextScroll : MonoBehaviour
 {
 
+    [TextArea(3, 15)]
     public string text;
     public Text box;
 

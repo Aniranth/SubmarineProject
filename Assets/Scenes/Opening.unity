@@ -853,7 +853,6 @@ GameObject:
   - component: {fileID: 1202819895}
   - component: {fileID: 1202819897}
   - component: {fileID: 1202819896}
-  - component: {fileID: 1202819898}
   m_Layer: 5
   m_Name: Dialogue
   m_TagString: Untagged
@@ -875,10 +874,10 @@ RectTransform:
   m_Father: {fileID: 502655807}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 56.3}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 13.5499325}
+  m_SizeDelta: {x: 0, y: -95.30014}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1202819896
 MonoBehaviour:
@@ -922,18 +921,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202819894}
   m_CullTransparentMesh: 1
---- !u!114 &1202819898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202819894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44884d0b674daff24a5a210ca1de8538, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1357516745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,6 +1257,60 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1809413225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1809413227}
+  - component: {fileID: 1809413226}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1809413226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809413225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44884d0b674daff24a5a210ca1de8538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: 'This is the text
+
+
+    The text is here
+
+
+    damn
+
+
+    fuck shit damn.'
+  box: {fileID: 1202819896}
+--- !u!4 &1809413227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809413225}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 426.92422, y: 206.40016, z: -28.559523}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1962016066
 GameObject:
   m_ObjectHideFlags: 0
