@@ -88,7 +88,7 @@ public class SubMovement : MonoBehaviour
     }
 
     Vector2 rotateVector2(Vector2 v, float deg){
-	float delta = Mathf.Deg2Rad * -deg;
+	float delta = Mathf.Deg2Rad * deg;
 	return new Vector2(
 	    v.x * Mathf.Cos(delta) - v.y * Mathf.Sin(delta),
             v.x * Mathf.Sin(delta) + v.y * Mathf.Cos(delta)

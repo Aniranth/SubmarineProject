@@ -7,30 +7,42 @@ public class PlayerHealth : MonoBehaviour
     public delegate void Sink();
     public static event Sink StartSink;
 
+    public delegate void LoseHealth(int currHealth);
+    public static event LoseHealth HealthLost;
+
     public int maxPlayerHealth = 10; // Change this with heart containers
     public int currPlayerHealth = 10; // Value to damage
 
     private bool is_dead = false;
 
+    private float timeCollided;
+
     private Rigidbody2D rb;
+    public LevelLoader loader;
+    public AudioSource col_sound;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        is_dead = false;
+    }
+
+    private void Update()
+    {
+        if(is_dead && Time.time >= timeCollided + 5f)
+        {
+            loader.ReloadLevel();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(is_dead)
-        {
-            // invoke delegate to play with ui game over you have crashed
-            return;
-        }
-        if(collision.gameObject.CompareTag("Nonharmful"))
+        if (collision.gameObject.CompareTag("Nonharmful"))
         {
             // Debug.Log("Point or dialog");
             return;
         }
+        col_sound.Play();
         Creature enemy = collision.gameObject.GetComponent<Creature>(); // Templatize with enemy when class is made
         if(enemy != null) // we have found an enemy in our collision look up damage
         {
@@ -56,6 +68,8 @@ public class PlayerHealth : MonoBehaviour
             // Debug.Log("WallCollision");
         }
 
+        HealthLost?.Invoke(currPlayerHealth);
+
         if(currPlayerHealth <= 0)
         {
             Die();
@@ -65,9 +79,13 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        is_dead = true;
-        StartSink?.Invoke();
-        Debug.Log("You have died");
+        if (!is_dead)
+        {
+            is_dead = true;
+            timeCollided = Time.fixedTime;
+            StartSink?.Invoke();
+            Debug.Log("You have died");
+        }
     }
 
     public bool getDead()

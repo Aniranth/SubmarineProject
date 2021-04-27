@@ -25,7 +25,7 @@ public class BallastKnob : MonoBehaviour
         else
         {
             // convert from (0, -440) to (0, -90)
-            ballastRect.rotation = Quaternion.Euler(new Vector3(0f, 0f, 4.89f * resultantYForce));
+            ballastRect.rotation = Quaternion.Euler(new Vector3(0f, 0f, 9f/5f * resultantYForce));
         }
     }
 
